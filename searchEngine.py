@@ -144,24 +144,35 @@ def rankedQueryResults(index,query,k,r):
          if r<len(champions):champions=champions[0:r]
          docs=docs | set(champions)
 
+    if len(docs)<k:
+        neededDocs=k-len(docs)
+        for i in range(0,neededDocs):
+         for term in queryTerms:
+             if len(docs)>=k:break
+             if term in index.index.keys():
+                 champions = index.index[term].championsList
+                 if r < len(champions): champions = champions[r+i]
+                 docs = docs | set(champions)
+
     docs=list(docs)
     score=dict()
     length=dict()
     for doc in docs:
-        for term in queryTerms:
-            if not doc in score:
-                score[doc]=0
-                length[doc]=0
-            weight=index.index[term].docTerms[doc].weight
-            score[doc]+=weight*queryWeights[term]
-            print()
-            length[doc]+=math.pow(weight,2)
+        for term in queryTerms :
+            if doc in index.index[term].docTerms.keys():
+             if not doc in score:
+                 score[doc]=0
+                 length[doc]=0
+             weight=index.index[term].docTerms[doc].weight
+             score[doc]+=weight*queryWeights[term]
+             print()
+             length[doc]+=math.pow(weight,2)
 
     for docId in score.keys():
         score[docId]=score[docId]/math.sqrt(length[docId])
 
     score=[(key,score[key]) for key in score.keys()]
-    score=sorted(score,key=lambda x:x[1])
+    score=sorted(score,key=lambda x:x[1],reverse=True)
     score=[temp[0] for temp in score]
     print()
     return score
@@ -213,9 +224,9 @@ def getOrderedFreqsOfTerms(Index):
     return freqs
 
 def idMaker(urls):
-    ids=set()
+    ids=[]
     for i in range(len(urls)):
-        ids.add(int(urls[i].split("/")[4]))
+        ids.append(int(urls[i].split("/")[4]))
     return list(ids)
 
 def idTransDictMaker(ids):
@@ -250,7 +261,7 @@ fileIndex.calculateTfIdf()
 
 #results = queryResults(fileIndex.index, query)
 
-results = rankedQueryResults(fileIndex,query,5,4)
+results = rankedQueryResults(fileIndex,query,3,4)
 
 print("تعداد اسناد بازیابی شده برابر است با:")
 print(len(results))
