@@ -29,9 +29,13 @@ By using the Index elimination technique, the problem of high response time in t
 #Testing 
 
 to test our system, we use four kinds of queries and show the results in the results file. These queries follow as such:
+
 1- A query of simple and common one-word expressions
+
 2- A query of simple and common multi-word expressions
+
 3- A difficult query of rarely repeated one-word expressions
+
 4- A difficult query with few words
 
 
