@@ -26,18 +26,6 @@ To increase response time, we can use the Index elimination technique to not cal
 
 By using the Index elimination technique, the problem of high response time in the previous step is solved to some extent, but the response time is still not acceptable for many applications. In order to increase the speed of processing and response, we can use Champion lists before a query is raised and in order to do that, during the document processing stage, a list of the most relevant documents related to each term is kept in a separate list. To implement this section, after creating the spatial-inverted index( which we use to calculate tf-idf weights as well), we create the Champion lists and compare only the query vector with the document vector obtained by searching the Champion list and displaying k related documents. More details of this method are given in chapter 7 of the book, "An Introduction To Information Retrieval" by Christopher D. Manning, Prabhakar Raghavan, and Hinrich Schütze.
 
-#Testing 
-
-to test our system, we use four kinds of queries and show the results in the results file. These queries follow as such:
-
-1- A query of simple and common one-word expressions
-
-2- A query of simple and common multi-word expressions
-
-3- A difficult query of rarely repeated one-word expressions
-
-4- A difficult query with few words
-
 
 
 
