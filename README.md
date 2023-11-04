@@ -19,7 +19,7 @@ With the user's question, the special vector of the question is extracted (the w
 
 ![image](https://github.com/MahdiTheGreat/RankedSearchEngine/assets/47212121/06acfe6f-7f2a-4fe3-92a3-e2236b4300d2)
 
-To increase response time, we can use the Index elimination technique to not calculate cosine similarity with documents that will score zero. Finally, to display a page of query results, it is enough to select K documents that are most similar to the query.
+To increase response time, we can use the Index elimination technique to not calculate cosine similarity with documents that will score zero, though the documents must contain at least one term that is in the query. Finally, to display a page of query results, it is enough to select K documents that are most similar to the query.
 
 # Increasing the speed of query processing
 
