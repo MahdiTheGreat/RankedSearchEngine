@@ -10,7 +10,7 @@ a numerical vector will be calculated for each document, and finally, each docum
 containing the weights of all the words in that document. Calculating the weight of each word t in document d by having 
 the set of all documents D is calculated using the following equation:
 
-![image](https://github.com/MahdiTheGreat/RankedSearchEngine/assets/47212121/af39be8b-3a44-4dd7-a41c-cb2bf34ad54e)
+![image](./af39be8b-3a44-4dd7-a41c-cb2bf34ad54e)
 
 
 where f_t,d is the number of repetitions of the word t in document d and n_t is the number of documents in which the word t appears. More details of this method are given in chapter 6 of the reference book. In the above vector representation, zero weight is considered for a word that does not exist in a document, and therefore many elements of the calculated vectors will be zero. To save memory, instead of considering a full numeric vector for each document, where many elements are zero, we can store the word weights in different documents in the same post lists. At the time of answering the user's question (which will be explained further) and at the same time as searching for words in the postings list, we can also fetch the weight of the words in different documents, and in this way, only the non-zero elements of the document vectors are stored and processed.
