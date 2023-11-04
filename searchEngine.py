@@ -56,6 +56,7 @@ class Term:
   self.docTerms[docId].insert(position=position)
 
  def updateLists(self):
+     # similar to docIds, championsList must also be updated after all the doccuments have been processed.
      self.championsList=sorted(self.docTerms.values(),reverse=True)
      self.docIds=sorted(self.docTerms.keys())
 
