@@ -10,14 +10,14 @@ a numerical vector will be calculated for each document, and finally, each docum
 containing the weights of all the words in that document. Calculating the weight of each word t in document d by having 
 the set of all documents D is calculated using the following equation:
 
-![image](https://github.com/MahdiTheGreat/RankedSearchEngine/assets/47212121/af39be8b-3a44-4dd7-a41c-cb2bf34ad54e)
+![252778473-af39be8b-3a44-4dd7-a41c-cb2bf34ad54e](https://github.com/MahdiTheGreat/RankedSearchEngine/assets/47212121/e145a39b-ed8a-49b0-a6ec-5a375f748ea5)
 
 where f_t,d is the number of repetitions of the word t in document d and n_t is the number of documents in which the word t appears. More details of this method are given in chapter 6 of the reference book, "An Introduction To Information Retrieval" by Christopher D. Manning, Prabhakar Raghavan, and Hinrich Schütze. In the above vector representation, zero weight is considered for a word that does not exist in a document, and therefore many elements of the calculated vectors will be zero. To save memory, instead of considering a full numeric vector for each document, where many elements are zero, we can store the word weights in different documents in the same post lists. At the time of answering the user's question (which will be explained further) and at the same time as searching for words in the postings list, we can also fetch the weight of the words in different documents, and in this way, only the non-zero elements of the document vectors are stored and processed.
 
 # Answering the question in vector space
 With the user's question, the special vector of the question is extracted (the weight of the words in the question is calculated), and then, using the similarity criterion, it is tried to find the documents that have the most similarity (the least distance) to the input question. The results are then displayed in order of similarity. Various distance measures can be considered for this task, the simplest of which is the cosine similarity between vectors, which calculates the angle between two vectors. This criterion is defined as follows:
 
-![image](https://github.com/MahdiTheGreat/RankedSearchEngine/assets/47212121/06acfe6f-7f2a-4fe3-92a3-e2236b4300d2)
+![252780206-06acfe6f-7f2a-4fe3-92a3-e2236b4300d2](https://github.com/MahdiTheGreat/RankedSearchEngine/assets/47212121/201c27a6-1fb3-4d8a-ad16-e7667a3fa68d)
 
 keep in mind that we don't use the length of a or the query, since it's a constant. 
 
